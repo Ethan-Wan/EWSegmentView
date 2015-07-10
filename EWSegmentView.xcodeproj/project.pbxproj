@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		AA86D4EC1B4CB90D007D485E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA86D4EB1B4CB90D007D485E /* main.m */; };
 		AA86D4EF1B4CB90D007D485E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA86D4EE1B4CB90D007D485E /* AppDelegate.m */; };
-		AA86D4F21B4CB90D007D485E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA86D4F11B4CB90D007D485E /* ViewController.m */; };
+		AA86D4F21B4CB90D007D485E /* EWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA86D4F11B4CB90D007D485E /* EWViewController.m */; };
 		AA86D4F51B4CB90D007D485E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA86D4F31B4CB90D007D485E /* Main.storyboard */; };
 		AA86D4F71B4CB90D007D485E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA86D4F61B4CB90D007D485E /* Images.xcassets */; };
 		AA86D4FA1B4CB90D007D485E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA86D4F81B4CB90D007D485E /* LaunchScreen.xib */; };
 		AA86D5061B4CB90D007D485E /* EWSegmentViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA86D5051B4CB90D007D485E /* EWSegmentViewTests.m */; };
+		AA86D5121B4CB960007D485E /* EWSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA86D5111B4CB960007D485E /* EWSegmentView.m */; };
+		AA86D5151B4CB985007D485E /* EWSegmentHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA86D5141B4CB985007D485E /* EWSegmentHeadView.m */; };
+		AA86D5181B4CB9B5007D485E /* EWSegmentHeadButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA86D5171B4CB9B5007D485E /* EWSegmentHeadButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +35,20 @@
 		AA86D4EB1B4CB90D007D485E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AA86D4ED1B4CB90D007D485E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AA86D4EE1B4CB90D007D485E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AA86D4F01B4CB90D007D485E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		AA86D4F11B4CB90D007D485E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AA86D4F01B4CB90D007D485E /* EWViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWViewController.h; sourceTree = "<group>"; };
+		AA86D4F11B4CB90D007D485E /* EWViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWViewController.m; sourceTree = "<group>"; };
 		AA86D4F41B4CB90D007D485E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AA86D4F61B4CB90D007D485E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AA86D4F91B4CB90D007D485E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		AA86D4FF1B4CB90D007D485E /* EWSegmentViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EWSegmentViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA86D5041B4CB90D007D485E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA86D5051B4CB90D007D485E /* EWSegmentViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWSegmentViewTests.m; sourceTree = "<group>"; };
+		AA86D5101B4CB960007D485E /* EWSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWSegmentView.h; sourceTree = "<group>"; };
+		AA86D5111B4CB960007D485E /* EWSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWSegmentView.m; sourceTree = "<group>"; };
+		AA86D5131B4CB985007D485E /* EWSegmentHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWSegmentHeadView.h; sourceTree = "<group>"; };
+		AA86D5141B4CB985007D485E /* EWSegmentHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWSegmentHeadView.m; sourceTree = "<group>"; };
+		AA86D5161B4CB9B5007D485E /* EWSegmentHeadButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWSegmentHeadButton.h; sourceTree = "<group>"; };
+		AA86D5171B4CB9B5007D485E /* EWSegmentHeadButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWSegmentHeadButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +90,11 @@
 		AA86D4E81B4CB90D007D485E /* EWSegmentView */ = {
 			isa = PBXGroup;
 			children = (
+				AA86D50F1B4CB930007D485E /* SegmentView */,
 				AA86D4ED1B4CB90D007D485E /* AppDelegate.h */,
 				AA86D4EE1B4CB90D007D485E /* AppDelegate.m */,
-				AA86D4F01B4CB90D007D485E /* ViewController.h */,
-				AA86D4F11B4CB90D007D485E /* ViewController.m */,
+				AA86D4F01B4CB90D007D485E /* EWViewController.h */,
+				AA86D4F11B4CB90D007D485E /* EWViewController.m */,
 				AA86D4F31B4CB90D007D485E /* Main.storyboard */,
 				AA86D4F61B4CB90D007D485E /* Images.xcassets */,
 				AA86D4F81B4CB90D007D485E /* LaunchScreen.xib */,
@@ -117,6 +127,19 @@
 				AA86D5041B4CB90D007D485E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AA86D50F1B4CB930007D485E /* SegmentView */ = {
+			isa = PBXGroup;
+			children = (
+				AA86D5101B4CB960007D485E /* EWSegmentView.h */,
+				AA86D5111B4CB960007D485E /* EWSegmentView.m */,
+				AA86D5131B4CB985007D485E /* EWSegmentHeadView.h */,
+				AA86D5141B4CB985007D485E /* EWSegmentHeadView.m */,
+				AA86D5161B4CB9B5007D485E /* EWSegmentHeadButton.h */,
+				AA86D5171B4CB9B5007D485E /* EWSegmentHeadButton.m */,
+			);
+			path = SegmentView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,8 +242,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA86D4F21B4CB90D007D485E /* ViewController.m in Sources */,
+				AA86D5121B4CB960007D485E /* EWSegmentView.m in Sources */,
+				AA86D4F21B4CB90D007D485E /* EWViewController.m in Sources */,
 				AA86D4EF1B4CB90D007D485E /* AppDelegate.m in Sources */,
+				AA86D5181B4CB9B5007D485E /* EWSegmentHeadButton.m in Sources */,
+				AA86D5151B4CB985007D485E /* EWSegmentHeadView.m in Sources */,
 				AA86D4EC1B4CB90D007D485E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
