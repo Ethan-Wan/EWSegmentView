@@ -28,13 +28,30 @@
     test3Vc.title = @"test3";
     test3Vc.view.backgroundColor = [UIColor greenColor];
     
+    UIViewController *test4Vc = [[UIViewController alloc] init];
+    test4Vc.title = @"test4";
+    test4Vc.view.backgroundColor = [UIColor whiteColor];
+    
     NSMutableArray *array = [NSMutableArray array];
     [array addObject:test1Vc];
     [array addObject:test2Vc];
     [array addObject:test3Vc];
+    [array addObject:test4Vc];
 
-    self.segmentView.pages = array;
+    //添加子控制器
+//    self.segmentView.subViewControllers = array;
+    
+    [self.segmentView addSubViewController:test1Vc];
+    [self.segmentView addSubViewController:test2Vc];
+    [self.segmentView addSubViewController:test3Vc];
+    
+//    self.headView.hiddenBottom = YES;
+    self.headView.selectedTitleColor = [UIColor redColor];
+    self.headView.bottomColor = [UIColor redColor];
+    
+    //这样可以实现选择头和分页界面的脱离
     self.segmentView.headView = self.headView;
+
 }
 
 @end

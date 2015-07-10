@@ -14,7 +14,7 @@
 /**
  *  用来存放需要所有的控制器
  */
-@property (strong, nonatomic)NSMutableArray *pages;
+@property (strong, nonatomic)NSMutableArray *subViewControllers;
 
 @property (weak, nonatomic) EWSegmentHeadView *headView;
 

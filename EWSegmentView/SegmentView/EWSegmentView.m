@@ -45,7 +45,7 @@
 -(NSMutableArray *)getTitles
 {
     NSMutableArray *titles = [NSMutableArray array];
-    for (UIViewController *vc in self.pages) {
+    for (UIViewController *vc in self.subViewControllers) {
         [titles addObject:vc.title? vc.title:@"title"];
     }
     return [titles copy];
@@ -53,7 +53,7 @@
 
 - (UIViewController *)selectedController
 {
-    return self.pages[[self.headView selectedButtonIndex]];
+    return self.subViewControllers[[self.headView selectedButtonIndex]];
 }
 
 
@@ -61,7 +61,7 @@
 
 -(void)segmentHeadView:(EWSegmentHeadView *)headView didClick:(UIButton *)headButton
 {
-    UIPageViewControllerNavigationDirection direction = [self.headView selectedButtonIndex] > [self.pages indexOfObject:[self.pageViewController.viewControllers lastObject]] ? UIPageViewControllerNavigationDirectionForward : UIPageViewControllerNavigationDirectionReverse;
+    UIPageViewControllerNavigationDirection direction = [self.headView selectedButtonIndex] > [self.subViewControllers indexOfObject:[self.pageViewController.viewControllers lastObject]] ? UIPageViewControllerNavigationDirectionForward : UIPageViewControllerNavigationDirectionReverse;
     
     [self.pageViewController setViewControllers:@[[self selectedController]]
                                       direction:direction
@@ -74,24 +74,24 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    NSUInteger index = [self.pages indexOfObject:viewController];
+    NSUInteger index = [self.subViewControllers indexOfObject:viewController];
     
     if ((index == NSNotFound) || (index == 0)) {
         return nil;
     }
     
-    return self.pages[--index];
+    return self.subViewControllers[--index];
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
-    NSUInteger index = [self.pages indexOfObject:viewController];
+    NSUInteger index = [self.subViewControllers indexOfObject:viewController];
     
-    if ((index == NSNotFound)||(index+1 >= [self.pages count])) {
+    if ((index == NSNotFound)||(index+1 >= [self.subViewControllers count])) {
         return nil;
     }
     
-    return self.pages[++index];
+    return self.subViewControllers[++index];
 }
 
 - (void)pageViewController:(UIPageViewController *)viewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
@@ -101,17 +101,17 @@
     }
     
     //改变headView中选种的按钮
-    [self.headView setSelectedButtonIndex:[self.pages indexOfObject:[viewController.viewControllers lastObject]]];
+    [self.headView setSelectedButtonIndex:[self.subViewControllers indexOfObject:[viewController.viewControllers lastObject]]];
 }
 
 #pragma mark - setter and getter
 
--(void)setPages:(NSMutableArray *)pages
+-(void)setSubViewControllers:(NSMutableArray *)subViewControllers
 {
-    _pages = pages;
+    _subViewControllers = subViewControllers;
     
-    if ([self.pages count]>0) {
-        [self.pageViewController setViewControllers:@[self.pages[0]]
+    if ([self.subViewControllers count]>0) {
+        [self.pageViewController setViewControllers:@[self.subViewControllers[0]]
                                           direction:UIPageViewControllerNavigationDirectionForward
                                            animated:NO
                                          completion:NULL];

@@ -41,6 +41,6 @@
     CGFloat viewW = self.frame.size.width;
     
     self.button.frame = CGRectMake(0, 0, viewW, viewH);
-    self.colorLabel.frame = CGRectMake(0, viewH * 0.8, viewW, viewH * 0.2);
+    self.colorLabel.frame = CGRectMake(0.05 * viewW, viewH * 0.9, viewW * 0.9, viewH * 0.1);
 }
 @end

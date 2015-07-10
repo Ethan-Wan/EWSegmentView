@@ -17,22 +17,9 @@
 
 @implementation EWSegmentHeadView
 
--(instancetype)initWithFrame:(CGRect)frame
-{
-    if (self = [super initWithFrame:frame]) {
-        
-    }
-    return self;
-}
-
--(id)initWithCoder:(NSCoder *)aDecoder
-{
-    if (self = [super initWithCoder:aDecoder]) {
-
-    }
-    return self;
-}
-
+/**
+ *  布局按钮
+ */
 -(void)layoutSubviews
 {
     CGFloat viewH = self.frame.size.height;
@@ -45,6 +32,11 @@
 
 #pragma mark - private method
 
+/**
+ *  根据传入控制器的标题来添加按钮
+ *
+ *  @param title 控制器标题
+ */
 -(void)addHeadButton:(NSString *)title
 {
     EWSegmentHeadButton *headButton = [[EWSegmentHeadButton alloc] init];
@@ -56,13 +48,20 @@
     [headButton.button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
     if (!self.selectedHeadButton) {
         self.selectedHeadButton = headButton;
-        [headButton.colorLabel setBackgroundColor:self.bottomColor?self.bottomColor:[UIColor orangeColor]];
+        if (!self.isHiddenBottom)
+        {
+            [headButton.colorLabel setBackgroundColor:self.bottomColor?self.bottomColor:[UIColor orangeColor]];
+        }
         self.selectedHeadButton.button.selected = YES;
     }
-    
     [self addSubview:headButton];
 }
 
+/**
+ *  按钮的切换
+ *
+ *  @param button 按钮
+ */
 -(void)turnSelectedButton:(UIButton *)button
 {
     EWSegmentHeadButton *headButton = (EWSegmentHeadButton *)[button superview];
@@ -115,7 +114,6 @@
 
 -(NSInteger)selectedButtonIndex
 {
-    NSLog(@"%@--%@",[self.selectedHeadButton superview],self.subviews);
     return [self.subviews indexOfObject:self.selectedHeadButton];
 }
 
