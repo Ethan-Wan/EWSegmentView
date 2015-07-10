@@ -39,11 +39,8 @@
     [array addObject:test4Vc];
 
     //添加子控制器
-//    self.segmentView.subViewControllers = array;
+    self.segmentView.subViewControllers = array;
     
-    [self.segmentView addSubViewController:test1Vc];
-    [self.segmentView addSubViewController:test2Vc];
-    [self.segmentView addSubViewController:test3Vc];
     
 //    self.headView.hiddenBottom = YES;
     self.headView.selectedTitleColor = [UIColor redColor];
