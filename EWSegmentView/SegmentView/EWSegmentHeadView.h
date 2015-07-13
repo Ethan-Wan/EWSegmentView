@@ -7,13 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-@class EWSegmentHeadView;
-
-//@protocol EWSegmentHeadViewDelegate <NSObject>
-//
-//-(void)segmentHeadView:(EWSegmentHeadView *)headView didClick:(UIButton *)headButton;
-//
-//@end
 
 @interface EWSegmentHeadView : UIView
 
@@ -24,11 +17,11 @@
  */
 -(void)setHeadTitles:(NSMutableArray *)titles;
 
-//@property (nonatomic,strong) id<EWSegmentHeadViewDelegate> delegate;
-
 @property (nonatomic,strong) UIColor *selectedTitleColor;
 
 @property (nonatomic,strong) UIColor *normalTitleColor;
+
+//@property (nonatomic,strong) UIColor *backgroundColor;
 
 @property (nonatomic,strong) UIColor *bottomColor;
 

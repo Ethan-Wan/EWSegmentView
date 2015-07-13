@@ -56,20 +56,6 @@
     return self.subViewControllers[[self.headView selectedButtonIndex]];
 }
 
-
-#pragma mark - HeadViewDelegate
-
-//-(void)segmentHeadView:(EWSegmentHeadView *)headView didClick:(UIButton *)headButton
-//{
-//    UIPageViewControllerNavigationDirection direction = [self.headView selectedButtonIndex] > [self.subViewControllers indexOfObject:[self.pageViewController.viewControllers lastObject]] ? UIPageViewControllerNavigationDirectionForward : UIPageViewControllerNavigationDirectionReverse;
-//    
-//    [self.pageViewController setViewControllers:@[[self selectedController]]
-//                                      direction:direction
-//                                       animated:YES
-//                                     completion:NULL];
-//    
-//}
-
 #pragma mark - UIPageViewControllerDataSource
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
@@ -127,6 +113,7 @@
     
     [self.headView setHeadTitles:[self getTitles]];
     
+    //利用block完成点击headview按钮事件
     _headView.didClick = ^()
     {
         UIPageViewControllerNavigationDirection direction = [self.headView selectedButtonIndex] > [self.subViewControllers indexOfObject:[self.pageViewController.viewControllers lastObject]] ? UIPageViewControllerNavigationDirectionForward : UIPageViewControllerNavigationDirectionReverse;
