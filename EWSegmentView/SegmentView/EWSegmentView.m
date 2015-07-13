@@ -21,8 +21,6 @@
 {
     if (self = [super initWithFrame:frame]) {
         [self setupPageView];
-        
-         [self event];
     }
     return self;
 }
@@ -31,8 +29,6 @@
 {
     if (self = [super initWithCoder:aDecoder]) {
         [self setupPageView];
-        
-         [self event];
     }
     return self;
 }
@@ -44,10 +40,6 @@
     [self addSubview:self.pageViewController.view];
 }
 
--(void)event
-{
-    
-}
 #pragma mark - private method
 
 -(NSMutableArray *)getTitles
