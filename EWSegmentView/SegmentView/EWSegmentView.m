@@ -9,7 +9,7 @@
 #import "EWSegmentView.h"
 #import "EWSegmentHeadView.h"
 
-@interface EWSegmentView()<EWSegmentHeadViewDelegate,UIPageViewControllerDataSource,UIPageViewControllerDelegate>
+@interface EWSegmentView()<UIPageViewControllerDataSource,UIPageViewControllerDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 
@@ -21,6 +21,8 @@
 {
     if (self = [super initWithFrame:frame]) {
         [self setupPageView];
+        
+         [self event];
     }
     return self;
 }
@@ -29,6 +31,8 @@
 {
     if (self = [super initWithCoder:aDecoder]) {
         [self setupPageView];
+        
+         [self event];
     }
     return self;
 }
@@ -40,6 +44,10 @@
     [self addSubview:self.pageViewController.view];
 }
 
+-(void)event
+{
+    
+}
 #pragma mark - private method
 
 -(NSMutableArray *)getTitles
@@ -59,16 +67,16 @@
 
 #pragma mark - HeadViewDelegate
 
--(void)segmentHeadView:(EWSegmentHeadView *)headView didClick:(UIButton *)headButton
-{
-    UIPageViewControllerNavigationDirection direction = [self.headView selectedButtonIndex] > [self.subViewControllers indexOfObject:[self.pageViewController.viewControllers lastObject]] ? UIPageViewControllerNavigationDirectionForward : UIPageViewControllerNavigationDirectionReverse;
-    
-    [self.pageViewController setViewControllers:@[[self selectedController]]
-                                      direction:direction
-                                       animated:YES
-                                     completion:NULL];
-    
-}
+//-(void)segmentHeadView:(EWSegmentHeadView *)headView didClick:(UIButton *)headButton
+//{
+//    UIPageViewControllerNavigationDirection direction = [self.headView selectedButtonIndex] > [self.subViewControllers indexOfObject:[self.pageViewController.viewControllers lastObject]] ? UIPageViewControllerNavigationDirectionForward : UIPageViewControllerNavigationDirectionReverse;
+//    
+//    [self.pageViewController setViewControllers:@[[self selectedController]]
+//                                      direction:direction
+//                                       animated:YES
+//                                     completion:NULL];
+//    
+//}
 
 #pragma mark - UIPageViewControllerDataSource
 
@@ -123,9 +131,19 @@
 {
     _headView = headView;
     
-    _headView.delegate = self;
+//    _headView.delegate = self;
     
     [self.headView setHeadTitles:[self getTitles]];
+    
+    _headView.didClick = ^()
+    {
+        UIPageViewControllerNavigationDirection direction = [self.headView selectedButtonIndex] > [self.subViewControllers indexOfObject:[self.pageViewController.viewControllers lastObject]] ? UIPageViewControllerNavigationDirectionForward : UIPageViewControllerNavigationDirectionReverse;
+        
+            [self.pageViewController setViewControllers:@[[self selectedController]]
+                                              direction:direction
+                                               animated:YES
+                                             completion:NULL];
+    };
 }
 
 - (UIPageViewController *)pageViewController

@@ -90,10 +90,13 @@
     if(self.selectedHeadButton.button == button) return;
     [self turnSelectedButton:button];
 
-    if ([self.delegate respondsToSelector:@selector(segmentHeadView:didClick:)])
-    {
-        [self.delegate segmentHeadView:self didClick:button];
+    if (self.didClick) {
+        _didClick();
     }
+//    if ([self.delegate respondsToSelector:@selector(segmentHeadView:didClick:)])
+//    {
+//        [self.delegate segmentHeadView:self didClick:button];
+//    }
 }
 
 #pragma mark - public method

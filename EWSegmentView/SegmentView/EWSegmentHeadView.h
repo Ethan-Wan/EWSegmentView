@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 @class EWSegmentHeadView;
 
-@protocol EWSegmentHeadViewDelegate <NSObject>
-
--(void)segmentHeadView:(EWSegmentHeadView *)headView didClick:(UIButton *)headButton;
-
-@end
+//@protocol EWSegmentHeadViewDelegate <NSObject>
+//
+//-(void)segmentHeadView:(EWSegmentHeadView *)headView didClick:(UIButton *)headButton;
+//
+//@end
 
 @interface EWSegmentHeadView : UIView
 
@@ -24,13 +24,16 @@
  */
 -(void)setHeadTitles:(NSMutableArray *)titles;
 
-@property (nonatomic,strong) id<EWSegmentHeadViewDelegate> delegate;
+//@property (nonatomic,strong) id<EWSegmentHeadViewDelegate> delegate;
 
 @property (nonatomic,strong) UIColor *selectedTitleColor;
 
 @property (nonatomic,strong) UIColor *normalTitleColor;
 
 @property (nonatomic,strong) UIColor *bottomColor;
+
+/** 定义按钮切换的block*/
+@property (nonatomic,strong) void (^didClick)();
 
 /**
  *  是否隐藏底部的颜色条
