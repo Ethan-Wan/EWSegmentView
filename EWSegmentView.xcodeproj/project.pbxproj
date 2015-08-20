@@ -16,7 +16,6 @@
 		AA86D5061B4CB90D007D485E /* EWSegmentViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA86D5051B4CB90D007D485E /* EWSegmentViewTests.m */; };
 		AA86D5121B4CB960007D485E /* EWSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA86D5111B4CB960007D485E /* EWSegmentView.m */; };
 		AA86D5151B4CB985007D485E /* EWSegmentHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA86D5141B4CB985007D485E /* EWSegmentHeadView.m */; };
-		AA86D5181B4CB9B5007D485E /* EWSegmentHeadButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA86D5171B4CB9B5007D485E /* EWSegmentHeadButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +46,6 @@
 		AA86D5111B4CB960007D485E /* EWSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWSegmentView.m; sourceTree = "<group>"; };
 		AA86D5131B4CB985007D485E /* EWSegmentHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWSegmentHeadView.h; sourceTree = "<group>"; };
 		AA86D5141B4CB985007D485E /* EWSegmentHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWSegmentHeadView.m; sourceTree = "<group>"; };
-		AA86D5161B4CB9B5007D485E /* EWSegmentHeadButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWSegmentHeadButton.h; sourceTree = "<group>"; };
-		AA86D5171B4CB9B5007D485E /* EWSegmentHeadButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWSegmentHeadButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,8 +133,6 @@
 				AA86D5111B4CB960007D485E /* EWSegmentView.m */,
 				AA86D5131B4CB985007D485E /* EWSegmentHeadView.h */,
 				AA86D5141B4CB985007D485E /* EWSegmentHeadView.m */,
-				AA86D5161B4CB9B5007D485E /* EWSegmentHeadButton.h */,
-				AA86D5171B4CB9B5007D485E /* EWSegmentHeadButton.m */,
 			);
 			path = SegmentView;
 			sourceTree = "<group>";
@@ -245,7 +240,6 @@
 				AA86D5121B4CB960007D485E /* EWSegmentView.m in Sources */,
 				AA86D4F21B4CB90D007D485E /* EWViewController.m in Sources */,
 				AA86D4EF1B4CB90D007D485E /* AppDelegate.m in Sources */,
-				AA86D5181B4CB9B5007D485E /* EWSegmentHeadButton.m in Sources */,
 				AA86D5151B4CB985007D485E /* EWSegmentHeadView.m in Sources */,
 				AA86D4EC1B4CB90D007D485E /* main.m in Sources */,
 			);
@@ -440,6 +434,7 @@
 				AA86D50B1B4CB90D007D485E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AA86D50C1B4CB90D007D485E /* Build configuration list for PBXNativeTarget "EWSegmentViewTests" */ = {
 			isa = XCConfigurationList;
@@ -448,6 +443,7 @@
 				AA86D50E1B4CB90D007D485E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

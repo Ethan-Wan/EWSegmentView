@@ -7,15 +7,51 @@
 //
 
 #import "EWSegmentHeadView.h"
-#import "EWSegmentHeadButton.h"
 
 @interface EWSegmentHeadView()
 
-@property (nonatomic, strong) EWSegmentHeadButton *selectedHeadButton;
+@property (nonatomic,strong) UIButton *selectedHeadButton;
 
+@property (nonatomic,strong) UIView *buttonView;
+
+@property (nonatomic,strong) UILabel *slideLabel;
+
+@property (nonatomic,strong) UIView *bottomView;
 @end
 
 @implementation EWSegmentHeadView
+
+#pragma mark - init/alloc
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+
+-(void)setup
+{
+    self.buttonView = [[UIView alloc] init];
+    [self addSubview:self.buttonView];
+    
+    self.bottomView = [[UIView alloc] init];
+    [self addSubview:self.bottomView];
+    
+    self.slideLabel = [[UILabel alloc] init];
+    [self addSubview:self.slideLabel];
+}
 
 /**
  *  布局按钮
@@ -23,11 +59,23 @@
 -(void)layoutSubviews
 {
     CGFloat viewH = self.frame.size.height;
-    CGFloat headButtonW = self.frame.size.width/self.subviews.count;
+    CGFloat viewW = self.frame.size.width;
+    CGFloat headButtonW = viewW/self.buttonView.subviews.count;
     
-    [self.subviews enumerateObjectsUsingBlock:^(EWSegmentHeadButton *headView, NSUInteger idx, BOOL *stop) {
-        headView.frame = CGRectMake(idx * headButtonW, 0, headButtonW , viewH);
+    //按钮view布局
+    self.buttonView.frame = CGRectMake(0, 0, viewW, viewH * 0.9);
+    
+    //按钮布局
+    [self.buttonView.subviews enumerateObjectsUsingBlock:^(UIButton *headButton, NSUInteger idx, BOOL *stop) {
+        headButton.frame = CGRectMake(idx * headButtonW, 0, headButtonW , self.buttonView.bounds.size.height);
     }];
+    
+    //底部view布局
+    self.bottomView.frame = CGRectMake(0, viewH*0.9, viewW, viewH*0.1);
+    
+    //滑块布局
+    self.slideLabel.frame = CGRectMake(headButtonW * 0.05, viewH*0.9, headButtonW*0.9, viewH*0.1);
+    
 }
 
 #pragma mark - private method
@@ -39,22 +87,22 @@
  */
 -(void)addHeadButton:(NSString *)title
 {
-    EWSegmentHeadButton *headButton = [[EWSegmentHeadButton alloc] init];
+    UIButton *headButton = [[UIButton alloc] init];
     
     //设置按钮的基本属性
-    [headButton.button setTitle:title forState:UIControlStateNormal];
-    [headButton.button setTitleColor:self.selectedTitleColor?self.selectedTitleColor:[UIColor orangeColor] forState:UIControlStateSelected];
-    [headButton.button setTitleColor:self.normalTitleColor?self.normalTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [headButton.button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [headButton setTitle:title forState:UIControlStateNormal];
+    [headButton setTitleColor:self.selectedTitleColor?self.selectedTitleColor:[UIColor orangeColor] forState:UIControlStateSelected];
+    [headButton setTitleColor:self.normalTitleColor?self.normalTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [headButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
     if (!self.selectedHeadButton) {
         self.selectedHeadButton = headButton;
         if (!self.isHiddenBottom)
         {
-            [headButton.colorLabel setBackgroundColor:self.bottomColor?self.bottomColor:[UIColor orangeColor]];
+            [self.slideLabel setBackgroundColor:self.bottomColor?self.bottomColor:[UIColor orangeColor]];
         }
-        self.selectedHeadButton.button.selected = YES;
+        self.selectedHeadButton.selected = YES;
     }
-    [self addSubview:headButton];
+    [self.buttonView addSubview:headButton];
 }
 
 /**
@@ -64,32 +112,30 @@
  */
 -(void)turnSelectedButton:(UIButton *)button
 {
-    EWSegmentHeadButton *headButton = (EWSegmentHeadButton *)[button superview];
-    
-    //切换选中状态
-    if(self.selectedHeadButton.button != button)
-    {
-        
-        //没隐藏底部条的时候切换颜色
-        if (!self.isHiddenBottom) {
-            [self.selectedHeadButton.colorLabel setBackgroundColor:[UIColor clearColor]];
-            headButton.colorLabel.backgroundColor = self.bottomColor?self.bottomColor:[UIColor orangeColor];
-        }
-        
-        self.selectedHeadButton.button.selected = NO;
-        button.selected = YES;
-        self.selectedHeadButton = headButton;
+    //话动颜色
+    if (!self.isHiddenBottom) {
+        [UIView animateWithDuration:0.4 animations:^{
+            CGFloat labelX = button.frame.origin.x + button.frame.size.width*0.05;
+            CGFloat labelY = button.frame.size.height;
+            CGFloat labelW = self.slideLabel.bounds.size.width;
+            CGFloat labelH = self.slideLabel.bounds.size.height;
+            
+            self.slideLabel.frame = CGRectMake(labelX, labelY, labelW, labelH);
+        }];
     }
     
+    self.selectedHeadButton.selected = NO;
+    button.selected = YES;
+    self.selectedHeadButton = button;
 }
 
 #pragma mark - event response
 
 -(void)buttonClick:(UIButton *)button
 {
-    if(self.selectedHeadButton.button == button) return;
+    if(self.selectedHeadButton == button) return;
     [self turnSelectedButton:button];
-
+    
     if (self.didClick) {
         _didClick();
     }
@@ -106,14 +152,14 @@
 
 -(void)setSelectedButtonIndex:(NSInteger)selectedButtonIndex
 {
-    EWSegmentHeadButton *headButton = (EWSegmentHeadButton *)self.subviews[selectedButtonIndex];
+    UIButton *headButton = self.buttonView.subviews[selectedButtonIndex];
     
-    [self turnSelectedButton:headButton.button];
+    [self turnSelectedButton:headButton];
 }
 
 -(NSInteger)selectedButtonIndex
 {
-    return [self.subviews indexOfObject:self.selectedHeadButton];
+    return [self.buttonView.subviews indexOfObject:self.selectedHeadButton];
 }
 
 @end
