@@ -1,3 +1,7 @@
+    # 分页视图 segamentView
+    
+    ### 使用方式
+    
     UIViewController *test1Vc = [[UIViewController alloc] init];
     test1Vc.title = @"test1";
     test1Vc.view.backgroundColor = [UIColor redColor];
