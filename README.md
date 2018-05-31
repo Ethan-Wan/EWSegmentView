@@ -2,6 +2,7 @@
     
     ### 使用方式
     
+    ``` objective-c
     UIViewController *test1Vc = [[UIViewController alloc] init];
     test1Vc.title = @"test1";
     test1Vc.view.backgroundColor = [UIColor redColor];
@@ -31,3 +32,4 @@
     self.headView.bottomColor = [UIColor redColor];
     
     self.segmentView.headView = self.headView;
+```
